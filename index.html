@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0F1317">
+<title>爱豆人生四格</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rail" aria-hidden="true">
+  <span>PHOTO BOOTH — 4 CUT — SHOOT WITH YOUR IDOL — 人生四格 —</span>
+</div>
+
+<main class="deck">
+
+  <!-- ══════════ 首页 ══════════ -->
+  <section class="view is-on" id="view-home">
+    <header class="masthead">
+      <p class="eyebrow">Idol Life / 四格拍立得</p>
+      <h1>选一张<br><em>模板</em></h1>
+    </header>
+
+    <ul class="tpl-list" id="tplList"></ul>
+
+    <p class="note" id="ctxNote" hidden>
+      摄像头只在 <b>https://</b> 或 <b>localhost</b> 下可用。直接双击打开 html 文件是拍不了的。
+    </p>
+  </section>
+
+  <!-- ══════════ 拍摄 ══════════ -->
+  <section class="view" id="view-shoot">
+    <div class="topbar">
+      <button class="tbtn" id="btnBack" type="button">返回</button>
+      <p class="step">第 <b id="stepNow">1</b> 格 / 共 4 格</p>
+      <button class="tbtn" id="btnFlip" type="button">翻转镜头</button>
+    </div>
+
+    <div class="stage" id="stage">
+      <video id="cam" playsinline autoplay muted></video>
+      <canvas id="shotPreview" hidden></canvas>
+      <div class="overlay" id="overlay"></div>
+      <div class="count" id="count" hidden><span id="countNum">3</span></div>
+      <div class="flash" id="flash"></div>
+      <div class="camstate" id="camState" hidden>
+        <div>
+          <p id="camMsg"></p>
+          <button class="btn ghost" id="btnPick" type="button">改用相册 / 系统相机</button>
+        </div>
+      </div>
+    </div>
+
+    <ol class="strip" id="strip"></ol>
+
+    <div class="controls" id="ctrlShoot">
+      <button class="shutter" id="btnShoot" type="button" aria-label="拍摄"><i></i></button>
+      <p class="hint" id="shootHint">站到爱豆旁边的空位上</p>
+      <button class="linkbtn" id="btnPick2" type="button">摄像头用不了？改成选一张图</button>
+    </div>
+
+    <div class="controls two" id="ctrlConfirm" hidden>
+      <button class="btn ghost" id="btnRetake" type="button">重拍这格</button>
+      <button class="btn solid" id="btnNext" type="button">继续</button>
+    </div>
+  </section>
+
+  <!-- ══════════ 结果 ══════════ -->
+  <section class="view" id="view-result">
+    <header class="masthead tight">
+      <p class="eyebrow">Developed / 已冲印</p>
+      <h1>拍好了</h1>
+    </header>
+
+    <div class="print" id="print"></div>
+    <p class="note center">在图片上长按也可以直接存到相册。</p>
+
+    <div class="controls stackable">
+      <button class="btn solid wide" id="btnSave" type="button">下载到相册</button>
+      <div class="controls two flush">
+        <button class="btn ghost" id="btnShare" type="button">分享</button>
+        <button class="btn ghost" id="btnHome" type="button">回首页</button>
+      </div>
+      <button class="linkbtn" id="btnAgain" type="button">用这张模板再拍一次</button>
+    </div>
+  </section>
+
+</main>
+
+<input type="file" accept="image/*" capture="user" id="filePick" hidden>
+<div class="toast" id="toast" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
